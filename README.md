@@ -54,12 +54,12 @@ a `semver` bump before being able to take advantage of new features/bug fixes.
 
 Launch server (acts as the co-signer in the two-party signing scheme):
 ```javascript
-const { Server } = require('@zilliqa-js/account');
+const { Server } = require('@kzen-networks/zilliqa-account');
 new Server().launch();
 ```
 Create a wallet:
 ```javascript
-const { Zilliqa } = require('@zilliqa-js/zilliqa');
+const { Zilliqa } = require('@kzen-networks/zilliqa');
 const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
 const fs = require('fs');
 const ENCRYPTED_SHARE_PATH = './enc-share.json';
