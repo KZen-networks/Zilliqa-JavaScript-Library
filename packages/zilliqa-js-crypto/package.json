@@ -1,6 +1,6 @@
 {
-  "name": "@zilliqa-js/crypto",
-  "version": "0.6.3",
+  "name": "@kzen-networks/zilliqa-crypto",
+  "version": "0.6.4",
   "description": "Core crypto utilities for signing/verification/hashing Zilliqa transactions.",
   "main": "dist/index.js",
   "node": "dist/index.js",

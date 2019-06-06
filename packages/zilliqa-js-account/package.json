@@ -1,5 +1,5 @@
 {
-  "name": "@zilliqa-js/account",
+  "name": "@kzen-networks/zilliqa-account",
   "version": "0.6.3",
   "description": "Used for signing transactions.",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "@types/hdkey": "^0.7.0",
     "@types/lodash.range": "^3.2.6",
     "@zilliqa-js/core": "0.6.3",
-    "@zilliqa-js/crypto": "0.6.3",
+    "@kzen-networks/zilliqa-crypto": "0.6.4",
     "@zilliqa-js/proto": "0.6.0",
     "@zilliqa-js/util": "0.6.3",
     "bip39": "^2.5.0",
