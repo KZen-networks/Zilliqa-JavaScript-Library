@@ -1,0 +1,78 @@
+#!/usr/bin/env node
+
+const { Zilliqa } = require('../packages/zilliqa');
+const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
+const zilCrypto = require ('../packages/zilliqa-js-crypto');
+const { BN, Long, bytes, units } = require('../packages/zilliqa-js-util');
+
+const program = require('commander');
+const path = require('path');
+const fs = require('fs');
+const CLIENT_DB_PATH = path.join(__dirname, '../client_db');
+const ENCRYPTED_SHARE_PATH = path.join(CLIENT_DB_PATH, 'enc-share.json');
+const DEFAULT_PASSPHRASE = 'passphrase';  // only for demo purposes...
+const CHAIN_ID = 333;
+const MSG_VERSION = 1;
+const VERSION = bytes.pack(CHAIN_ID, MSG_VERSION);
+
+program
+  .command('address')
+  .action(async () => {
+    const address = await loadOrCreateWallet();
+    console.log(zilCrypto.toBech32Address(address));
+  });
+
+program
+  .command('balance <address>')
+  .action(async (address) => {
+    const normalizedAddress = zilCrypto.normaliseAddress(address);
+    const balance = await zilliqa.blockchain.getBalance(normalizedAddress);
+    console.log(balance);
+  });
+
+program
+  .command('transfer <from> <to> <amount>')
+  .action(async (from, to, amount) => {
+    await loadOrCreateWallet();
+    const minGasPriceResponse = await zilliqa.blockchain.getMinimumGasPrice();
+    const minGasPrice = new BN(minGasPriceResponse.result);
+    console.log('Sending... (confirmation may take around a minute)');
+    const tx = await zilliqa.blockchain.createTransaction(
+      zilliqa.transactions.new({
+        version: VERSION,
+        toAddr: to,  // should be either a valid checksum or bech32 address
+        amount: new BN(units.toQa(amount, units.Units.Zil)),
+        gasPrice: minGasPrice,
+        gasLimit: Long.fromNumber(1)
+      })
+    );
+    console.log(tx);
+  });
+
+async function loadOrCreateWallet() {
+  let address;
+  let encryptedShare;
+  if (fs.existsSync(ENCRYPTED_SHARE_PATH)) {
+    encryptedShare = fs.readFileSync(ENCRYPTED_SHARE_PATH);
+  }
+
+  if (encryptedShare) {
+    address = await zilliqa.wallet.addByKeystore(encryptedShare, DEFAULT_PASSPHRASE);
+  } else {
+    ensureDirSync(CLIENT_DB_PATH);
+    address = await zilliqa.wallet.create();  // run two-party key generation and store a share in default account
+    const encryptedShare = await zilliqa.wallet.export(address, DEFAULT_PASSPHRASE);
+    fs.writeFileSync(ENCRYPTED_SHARE_PATH, encryptedShare);
+  }
+  return address;
+}
+
+function ensureDirSync(dirpath) {
+  try {
+    fs.mkdirSync(dirpath, { recursive: true })
+  } catch (err) {
+    if (err.code !== 'EEXIST') throw err
+  }
+}
+
+program.parse(process.argv);
