@@ -1,12 +1,12 @@
 {
   "name": "@kzen-networks/zilliqa",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Main entry point to the Zilliqa JS client.",
   "main": "dist/index.js",
   "node": "dist/index.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
-  "repository": "https://www.github.com/Zilliqa/Zilliqa-Javascript-Library",
+  "repository": "https://github.com/KZen-Networks/Zilliqa-Javascript-Library",
   "author": "ian@zilliqa.com",
   "license": "GPL-3.0",
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "@kzen-networks/zilliqa-crypto",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Core crypto utilities for signing/verification/hashing Zilliqa transactions.",
   "main": "dist/index.js",
   "node": "dist/index.js",
@@ -9,7 +9,7 @@
   "jsnext:main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
-  "repository": "https://github.com/zilliqa/zilliqa-javascript-library/",
+  "repository": "https://github.com/KZen-Networks/Zilliqa-Javascript-Library",
   "license": "GPL-3.0",
   "publishConfig": {
     "access": "public"
