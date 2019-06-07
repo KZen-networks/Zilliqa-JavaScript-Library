@@ -1,4 +1,4 @@
-import * as zcrypto from '@zilliqa-js/crypto';
+import * as zcrypto from '@kzen-networks/zilliqa-crypto';
 import {
   SchnorrParty2,
   SchnorrParty2Share,
