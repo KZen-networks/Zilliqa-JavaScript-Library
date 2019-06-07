@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { Zilliqa } = require('@kzen-networks/zilliqa');
+const { Zilliqa } = require('../packages/zilliqa');
 const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
-const { BN, Long, bytes, units } = require('@ziliqa-js/util');
+const { BN, Long, bytes, units } = require('../packages/zilliqa-js-util');
 
 const program = require('commander');
 const path = require('path');

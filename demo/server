@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const { Zilliqa } = require('@kzen-networks/zilliqa');
+const { Zilliqa } = require('../packages/zilliqa');
 const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
 zilliqa.server.launch();

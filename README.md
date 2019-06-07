@@ -85,9 +85,9 @@ const MSG_VERSION = 1;
 const VERSION = bytes.pack(CHAIN_ID, MSG_VERSION);
 
 async function testBlockchain() {
-  await zilliqa.wallet.addByKeystore(fs.readFileSync(ENCRYPTED_SHARE_PATH), 'passphrase');  // load encrypted share
+  const address = await zilliqa.wallet.addByKeystore(fs.readFileSync(ENCRYPTED_SHARE_PATH), 'passphrase');  // load encrypted share
 
-  const balanceResponse = await zilliqa.blockchain.getBalance(normalizedAddress);
+  const balanceResponse = await zilliqa.blockchain.getBalance(address);
   console.log(balanceResponse.result.balance);
   // 100508300000000
 
