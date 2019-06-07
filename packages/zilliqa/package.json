@@ -1,6 +1,6 @@
 {
   "name": "@kzen-networks/zilliqa",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Main entry point to the Zilliqa JS client.",
   "main": "dist/index.js",
   "node": "dist/index.js",
