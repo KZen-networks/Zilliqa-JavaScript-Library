@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
-const { Server } = require('../packages/zilliqa-js-account/dist/server');
-new Server().launch();
+const { Zilliqa } = require('@kzen-networks/zilliqa');
+const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
+zilliqa.server.launch();

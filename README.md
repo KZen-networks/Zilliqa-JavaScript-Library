@@ -54,8 +54,9 @@ a `semver` bump before being able to take advantage of new features/bug fixes.
 
 Launch server (acts as the co-signer in the two-party signing scheme):
 ```javascript
-const { Server } = require('@kzen-networks/zilliqa-account');
-new Server().launch();
+const { Zilliqa } = require('@kzen-networks/zilliqa');
+const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
+zilliqa.server.launch();
 ```
 Create a wallet:
 ```javascript

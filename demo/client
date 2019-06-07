@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-const { Zilliqa } = require('../packages/zilliqa');
+const { Zilliqa } = require('@kzen-networks/zilliqa');
 const zilliqa = new Zilliqa('https://dev-api.zilliqa.com');
-const zilCrypto = require ('../packages/zilliqa-js-crypto');
-const { BN, Long, bytes, units } = require('../packages/zilliqa-js-util');
+const { BN, Long, bytes, units } = require('@ziliqa-js/util');
 
 const program = require('commander');
 const path = require('path');
@@ -19,13 +18,13 @@ program
   .command('address')
   .action(async () => {
     const address = await loadOrCreateWallet();
-    console.log(zilCrypto.toBech32Address(address));
+    console.log(zilliqa.crypto.toBech32Address(address));
   });
 
 program
   .command('balance <address>')
   .action(async (address) => {
-    const normalizedAddress = zilCrypto.normaliseAddress(address);
+    const normalizedAddress = zilliqa.crypto.normaliseAddress(address);
     const balance = await zilliqa.blockchain.getBalance(normalizedAddress);
     console.log(balance);
   });
