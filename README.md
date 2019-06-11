@@ -36,11 +36,11 @@ want to use it for.
 ## Installation
 
 It is recommended that developers install the JavaScript client by making use
-of the umbrella package `@zilliqa-js/zilliqa`. This takes care of bootstrapping the various modules, which are then accessible as members of the
+of the umbrella package **`@kzen-networks/zilliqa`**. This takes care of bootstrapping the various modules, which are then accessible as members of the
 `Zilliqa` class.
 
 ```shell
-yarn add @zilliqa-js/zilliqa
+yarn add @kzen-networks/zilliqa
 # bn.js should be added with the above package. if it is not, install it manually.
 yarn add bn.js
 ```
